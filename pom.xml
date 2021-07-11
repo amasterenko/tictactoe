@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.example</groupId>
+
+  <groupId>com.example</groupId>
   <artifactId>tictactoe</artifactId>
   <version>1.0</version>
-
   <name>tictactoe</name>
 
   <properties>
@@ -20,7 +20,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
 
@@ -34,7 +34,6 @@
   </dependencies>
 
   <build>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -98,6 +97,5 @@
           </executions>
         </plugin>
       </plugins>
-    </pluginManagement>
   </build>
 </project>

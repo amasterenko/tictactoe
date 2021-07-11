@@ -1,3 +1,3 @@
-##TicTacToe  
+## TicTacToe  
 Console game
 
