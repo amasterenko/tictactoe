@@ -1,4 +1,7 @@
-package org.example;
+package org.example.rules;
+
+import org.example.board.Board;
+import org.example.rules.Rules;
 
 public class GameRules implements Rules {
     private final Board board;
@@ -50,7 +53,7 @@ public class GameRules implements Rules {
     }
 
     @Override
-    public void resetPlayers() {
+    public void reset() {
         this.lastPlayer = 0;
         this.winPlayer = 0;
     }

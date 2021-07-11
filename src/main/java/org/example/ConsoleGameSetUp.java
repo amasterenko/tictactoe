@@ -1,20 +1,35 @@
 package org.example;
 
+import org.example.board.Board;
+import org.example.view.BoardView;
+import org.example.view.ConsoleBoardView;
+import org.example.board.GameBoard;
+import org.example.player.ComputerPlayer;
+import org.example.player.ConsolePlayer;
+import org.example.player.Player;
+import org.example.rules.GameRules;
+import org.example.rules.Rules;
+import org.example.view.*;
+
 import java.io.PrintWriter;
 import java.util.Optional;
 import java.util.Scanner;
 
 public class ConsoleGameSetUp {
-    private Scanner in;
-    private PrintWriter out;
+    private final Scanner in;
+    private final PrintWriter out;
     private final static int MIN_BOARD_SIZE = 2;
     private final static int MAX_BOARD_SIZE = 20;
+    private final static String COMP_PLAYER_NAME = "ComputerPlayer";
     private final Mark<PrintWriter> mark;
     private Board board;
     private final BoardView boardView;
+    private final WinView winView;
+    private final DrawView drawView;
     private Rules rules;
     private Player player1;
     private Player player2;
+    private int compPlayerNum;
 
     public ConsoleGameSetUp(Scanner in, PrintWriter out) {
         this.in = in;
@@ -23,28 +38,11 @@ public class ConsoleGameSetUp {
         this.mark = new ConsoleMark('X', 'O');
         this.boardView = new ConsoleBoardView(out, mark);
         this.rules = new GameRules(board);
-        this.player1 = new ConsolePlayer("player1", in, out, boardView);
-        this.player2 = new ConsolePlayer("player2", in, out, boardView);
-    }
-
-    public Board getBoard() {
-        return board;
-    }
-
-    public Player getPlayer1() {
-        return player1;
-    }
-
-    public Player getPlayer2() {
-        return player2;
-    }
-
-    public BoardView getBoardView() {
-        return boardView;
-    }
-
-    public Rules getRules() {
-        return rules;
+        this.winView = new ConsoleWinView(out);
+        this.drawView = new ConsoleDrawView(out);
+        this.player1 = new ConsolePlayer("player1", in, out);
+        this.player2 = new ConsolePlayer("player2", in, out);
+        this.compPlayerNum = 1;
     }
 
     public boolean init() {
@@ -59,12 +57,12 @@ public class ConsoleGameSetUp {
                     break;
                 }
                 if (size < MIN_BOARD_SIZE || size > MAX_BOARD_SIZE) {
-                    throw new IllegalArgumentException("Board size value is outside the range");
+                    throw new IllegalArgumentException("Size is out of the range!");
                 }
                 break;
             } catch (IllegalArgumentException e) {
                 //e.printStackTrace();
-                out.println("Wrong value. Would you like to try again? (y/n)");
+                out.println("Wrong value. Try again? (y/n)");
                 exit = !in.next().equalsIgnoreCase("y");
             }
         }
@@ -92,7 +90,7 @@ public class ConsoleGameSetUp {
             try {
                 type = Integer.parseInt(in.next());
                 if (type != 1 && type != 2) {
-                    throw new IllegalArgumentException("Player type is outside the range");
+                    throw new IllegalArgumentException("The type is out of the range");
                 }
                 break;
             } catch (IllegalArgumentException e) {
@@ -104,7 +102,7 @@ public class ConsoleGameSetUp {
             }
         }
         String name = "";
-        while (goOn) {
+        while (goOn && type == 1) {
             out.println("Input the " + num + " player name:");
             try {
                 name = in.next();
@@ -121,10 +119,40 @@ public class ConsoleGameSetUp {
             }
         }
         if (type == 1) {
-            return Optional.of(new ConsolePlayer(name, in, out, boardView));
+            return Optional.of(new ConsolePlayer(name, in, out));
         } else {
-            return Optional.of(new ComputerPlayer(out, boardView));
+            compPlayerNum = compPlayerNum > 2 ? 1 : compPlayerNum;
+            String compName = COMP_PLAYER_NAME + compPlayerNum++;
+            return Optional.of(new ComputerPlayer(compName, out));
         }
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public Player getPlayer1() {
+        return player1;
+    }
+
+    public Player getPlayer2() {
+        return player2;
+    }
+
+    public BoardView getBoardView() {
+        return boardView;
+    }
+
+    public WinView getWinView() {
+        return winView;
+    }
+
+    public DrawView getDrawView() {
+        return drawView;
+    }
+
+    public Rules getRules() {
+        return rules;
     }
 }
 

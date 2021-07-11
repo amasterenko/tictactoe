@@ -1,23 +1,22 @@
-package org.example;
+package org.example.player;
+
+import org.example.view.BoardView;
 
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ComputerPlayer implements Player {
-    private static int num = 1;
-    private final String name = "ComputerPlayer" + num++;
-    private final BoardView boardView;
+    private final String name;
     private final PrintWriter out;
 
-    public ComputerPlayer(PrintWriter out, BoardView boardView) {
-        this.boardView = boardView;
+    public ComputerPlayer(String name, PrintWriter out) {
         this.out = out;
+        this.name = name;
     }
 
     @Override
-    public int[] makeTurn(int[][] boardState, int curPlayerNum, boolean repeated) {
-        boardView.show(boardState);
+    public int[] makeTurn(int[][] boardState, int curPlayerNum) {
         out.println((name + " turns:"));
         Map<Integer, Map<Integer, Integer>> cells = new HashMap<>();
         int count = 0;

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.rules;
 
 public interface Rules {
     int nextPlayer();
@@ -7,5 +7,5 @@ public interface Rules {
 
     int getWinner();
 
-    void resetPlayers();
+    void reset();
 }

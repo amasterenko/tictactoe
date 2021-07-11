@@ -1,4 +1,4 @@
-package org.example;
+package org.example.board;
 
 public class GameBoard implements Board {
     private final int[][] board;

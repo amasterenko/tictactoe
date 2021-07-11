@@ -1,4 +1,4 @@
-package org.example;
+package org.example.view;
 
 import java.io.PrintWriter;
 

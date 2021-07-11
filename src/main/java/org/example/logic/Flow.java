@@ -1,4 +1,4 @@
-package org.example;
+package org.example.logic;
 
 public interface Flow {
     int start() throws IllegalStateException;
