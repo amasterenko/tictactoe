@@ -1,10 +1,15 @@
-package com.example.tictactoe.rules;
+package com.example.tictactoe.logic;
 
 import com.example.tictactoe.board.Board;
-
+/**
+ * Class represent the rules of the game.
+ *
+ * @author AndrewMs
+ * @version 1.0
+ */
 public class GameRules implements Rules {
     private final Board board;
-    private int lastPlayer;
+    private int lastPlayer = 2;
     private int winPlayer;
 
     public GameRules(Board board) {
@@ -12,8 +17,8 @@ public class GameRules implements Rules {
     }
 
     /**
-     * Define a player that will turn next.
-     * The right of the first turn is defined randomly.
+     * Defines a player making the next turn.
+     * Player1 always makes the first turn.
      * @return Optional with next player if next turn possible
      */
     @Override
@@ -21,17 +26,13 @@ public class GameRules implements Rules {
         if (!isNextTurnPossible()) {
             return 0;
         }
-        if (lastPlayer == 0) {
-            lastPlayer = Math.round(Math.random()) == 1 ? 1 : 2;
-        } else {
-            lastPlayer = lastPlayer == 1 ? 2 : 1;
-        }
+        lastPlayer = lastPlayer == 1 ? 2 : 1;
         return lastPlayer;
     }
 
     /**
-     * Define the next turn possibility.
-     * @return True if the board is not full and there is no winner of the game
+     * Defines the next turn possibility.
+     * @return True if the board is not full and there is no winner of the game.
      */
     @Override
     public boolean isNextTurnPossible() {
@@ -41,7 +42,7 @@ public class GameRules implements Rules {
 
     /**
      * Defines if the game has a winner.
-     * @return Optional with a player if the winner exists
+     * @return Optional with a player if the winner exists.
      */
     @Override
     public int getWinner() {
@@ -51,9 +52,14 @@ public class GameRules implements Rules {
         return winPlayer;
     }
 
+    /**
+     * Resets the values for new game.
+     *
+     */
     @Override
     public void reset() {
-        this.lastPlayer = 0;
+        this.lastPlayer = 2;
         this.winPlayer = 0;
+        this.board.reset();
     }
 }

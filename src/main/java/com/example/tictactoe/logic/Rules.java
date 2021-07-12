@@ -1,4 +1,4 @@
-package com.example.tictactoe.rules;
+package com.example.tictactoe.logic;
 
 public interface Rules {
     int nextPlayer();

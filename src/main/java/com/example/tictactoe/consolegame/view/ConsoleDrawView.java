@@ -1,7 +1,12 @@
-package com.example.tictactoe.view;
+package com.example.tictactoe.consolegame.view;
 
 import java.io.PrintWriter;
-
+/**
+ * Class displays the draw.
+ *
+ * @author AndrewMs
+ * @version 1.0
+ */
 public class ConsoleDrawView implements DrawView {
     private final PrintWriter out;
 

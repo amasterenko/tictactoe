@@ -3,7 +3,12 @@ package com.example.tictactoe.player;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * Class represent a dummy AI that makes turns randomly.
+ *
+ * @author AndrewMs
+ * @version 1.0
+ */
 public class ComputerPlayer implements Player {
     private final String name;
     private final PrintWriter out;
@@ -13,6 +18,12 @@ public class ComputerPlayer implements Player {
         this.name = name;
     }
 
+    /**
+     * Makes turn.
+     * @param boardState state of the game board as a matrix of cells.
+     * @param curPlayerNum a number (1 or 2) that represents the current player in the board state.
+     * @return the turn coordinates int[2], where X goes first and O goes second.
+     */
     @Override
     public int[] makeTurn(int[][] boardState, int curPlayerNum) {
         out.println((name + " turns:"));

@@ -1,5 +1,10 @@
 package com.example.tictactoe.board;
-
+/**
+ * Class represents the game board.
+ *
+ * @author AndrewMs
+ * @version 1.0
+ */
 public class GameBoard implements Board {
     private final int[][] board;
     private final int size;

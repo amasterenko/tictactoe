@@ -1,7 +1,12 @@
-package com.example.tictactoe.view;
+package com.example.tictactoe.consolegame.view;
 
 import java.io.PrintWriter;
-
+/**
+ * Class displays the game board.
+ *
+ * @author AndrewMs
+ * @version 1.0
+ */
 public class ConsoleBoardView implements BoardView {
     private final Mark<PrintWriter> mark;
     private final PrintWriter out;

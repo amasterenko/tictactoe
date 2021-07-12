@@ -1,9 +1,14 @@
-package com.example.tictactoe.view;
+package com.example.tictactoe.consolegame.view;
 
 import com.example.tictactoe.player.Player;
 
 import java.io.PrintWriter;
-
+/**
+ * Class displays the win.
+ *
+ * @author AndrewMs
+ * @version 1.0
+ */
 public class ConsoleWinView implements WinView {
     private final PrintWriter out;
 

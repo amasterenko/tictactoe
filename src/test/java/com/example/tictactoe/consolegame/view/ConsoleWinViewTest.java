@@ -1,5 +1,6 @@
-package com.example.tictactoe.view;
+package com.example.tictactoe.consolegame.view;
 
+import com.example.tictactoe.consolegame.input.ConsoleIntValidateInput;
 import com.example.tictactoe.player.ConsolePlayer;
 import com.example.tictactoe.player.Player;
 import org.junit.Test;
@@ -19,7 +20,8 @@ public class ConsoleWinViewTest {
     public void show() {
         ConsoleWinView view = new ConsoleWinView(out);
         String name = "Player1";
-        Player winner = new ConsolePlayer(name, new Scanner(""), out);
+        Player winner = new ConsolePlayer(name,
+                new ConsoleIntValidateInput(new Scanner(""), out), out);
         String expected = "------------" + ln + name + " won!" + ln + "------------" + ln;
         view.show(winner);
         assertEquals(expected, stubWriter.toString());

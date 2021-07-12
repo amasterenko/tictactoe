@@ -1,4 +1,4 @@
-package com.example.tictactoe.view;
+package com.example.tictactoe.consolegame.view;
 
 import org.junit.Test;
 

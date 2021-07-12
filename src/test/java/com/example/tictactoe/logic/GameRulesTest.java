@@ -1,4 +1,4 @@
-package com.example.tictactoe.rules;
+package com.example.tictactoe.logic;
 
 import com.example.tictactoe.board.Board;
 import com.example.tictactoe.board.GameBoard;
@@ -18,9 +18,8 @@ public class GameRulesTest {
     }
 
     @Test
-    public void nextPlayer() {
-        var expected = rules.nextPlayer() == 1 ? 2 : 1;
-        assertEquals(expected, rules.nextPlayer());
+    public void whenNextPlayerAndFirstTurnThen1() {
+        assertEquals(1, rules.nextPlayer());
     }
 
     @Test
@@ -102,7 +101,7 @@ public class GameRulesTest {
     }
 
     @Test
-    public void resetPlayers() {
+    public void whenReset() {
         int first = rules.nextPlayer();
         board.takeTurn(new int[]{1, 1}, first);
         board.takeTurn(new int[]{2, 1}, rules.nextPlayer());
@@ -110,7 +109,10 @@ public class GameRulesTest {
         board.takeTurn(new int[]{2, 3}, rules.nextPlayer());
         board.takeTurn(new int[]{1, 3}, rules.nextPlayer());
         assertEquals(first, rules.getWinner());
+        assertFalse(rules.isNextTurnPossible());
         rules.reset();
         assertEquals(0, rules.getWinner());
+        assertTrue(rules.isNextTurnPossible());
+        assertEquals(1, rules.nextPlayer());
     }
 }
