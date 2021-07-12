@@ -11,5 +11,16 @@ Console X/O game for two players.
 - The player who succeeds in placing _n_ of their marks in a diagonal, horizontal, or vertical row is the winner.  
 - The winner is detected automatically.  
 - The game board is displayed in text mode.  
-- Human player can choose X/O marks and their turn priority.  
+- Human player can choose X/O marks and their first turn priority.  
 
+### Usage
+
+#### Run application
+
+1. Build the JAR file with
+```
+mvn clean package
+```
+2. Run the JAR file from the project directory, as follows:
+```
+java -jar target/tictactoe-1.0.jar  
